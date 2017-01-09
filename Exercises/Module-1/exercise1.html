@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Exercise 1</title>
+        <script type="text/javascript" src="https://unpkg.com/vue@2.0.7/dist/vue.js">
+        </script>
+    </head>
+    <body>
+        <div id="exercise">
+             
+            <p>{{ name }} ({{ age }})</p>    
+
+            <p>{{ multAge(age) }}</p>
+
+            <p>{{ randomNum() }}</p>
+
+            <div>
+                <img v-bind:src="picture" />
+            </div>
+
+            <div>
+                <input type="text" v-bind:value="name" />
+            </div>
+
+        </div>     
+
+        <script type="text/javascript" charset="utf-8">
+            new Vue({
+                el: '#exercise',
+                data: {
+                    name: 'Chris Matzenbach',
+                    age: '27',
+                    picture: 'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png'
+                },
+                methods: {
+                    multAge: function(age) {
+                        return Number(age) * 3;
+                    },
+                    randomNum: function() {
+                        return Math.random();
+                    }
+                }
+            });    
+        </script>
+
+    </body>
+</html>

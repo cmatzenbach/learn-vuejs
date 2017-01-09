@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>First Vue</title>
+    <script type="text/javascript" src="https://unpkg.com/vue@2.0.7/dist/vue.js">
+    </script>
+</head>
+<body>
+
+  <div id="app">
+      <p>{{ sayHello() }}</p>
+  </div>  
+
+</body>
+<script type="text/javascript">
+new Vue({
+    el: '#app',
+    data: {
+        title: 'Hello World!'
+    },
+    methods: {
+        sayHello: function() {
+            return this.title;
+        }
+    }
+});
+</script>
+</html>
