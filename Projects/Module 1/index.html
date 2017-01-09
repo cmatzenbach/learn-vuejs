@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Monster Slayer</title>
+  <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+  <link rel="stylesheet" href="foundation.min.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div id="app">
+  <section class="row">
+    <div class="small-6 columns">
+      <h1 class="text-center">YOU</h1>
+      <div class="healthbar">
+        <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;" v-bind:style="{ width: plHealth + '%' }">
+          {{ plHealth }}
+        </div>
+      </div>
+    </div>
+    <div class="small-6 columns">
+      <h1 class="text-center">MONSTER</h1>
+      <div class="healthbar">
+        <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;" v-bind:style="{ width: cpHealth + '%' }">
+          {{ cpHealth }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <template v-if="!actShow">
+    <section class="row controls">
+      <div class="small-12 columns">
+        <button id="start-game" @click="startGame">START NEW GAME</button>
+      </div>
+    </section>
+  </template>
+
+  <template v-if="actShow">
+    <section class="row controls">
+      <div class="small-12 columns">
+        <button id="attack" @click="act_normAttack">ATTACK</button>
+        <button id="special-attack" @click="act_spAttack">SPECIAL ATTACK</button>
+        <button id="heal" @click="act_heal">HEAL</button>
+        <button id="give-up" @click="act_quit">GIVE UP</button>
+      </div>
+    </section>
+  </template>
+
+  <section class="row log">
+    <div class="small-12 columns">
+      <ul>
+        <template v-for="n in history">
+        <li style="background-color:#f9b8c1; color:red; font-weight:700" v-if="n.who === 'monster'">
+          MONSTER {{ n.what }} PLAYER FOR {{ n.dmg  }}
+        </li>
+        <li style="background-color:#e4e5fe; color:blue; font-weight:700" v-if="n.who === 'player'"> 
+          PLAYER {{ n.what }} <span v-if="n.what === 'HEALS'">PLAYER</span><span v-else>MONSTER</span> FOR {{ n.dmg  }}
+        </li>
+        </template>
+      </ul>
+    </div>
+  </section>
+  <script src="script.js"></script>
+</div>
+</body>
+</html>
